@@ -19,20 +19,55 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <!-- pyp5js index.html boilerplate -->
 <html lang="">
-  <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>web_test - pyp5js</title>
-    <style> body, html, canvas {padding: 0; margin: 0; overflow: hidden;} </style>
+<head>
 
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
-    <script src="target/target_sketch.js"  type="module"></script>
-  </head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>web_test - pyp5js</title>
+  <style>
+    body,
+    html,
+    canvas {
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
 
-  <body>
-    <div id="sketch-holder">
-          <!-- You sketch will go here! -->
-    </div>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
+  <script src="target/target_sketch.js" type="module"></script>
+</head>
+
+<body>
+  <div id="sketch-holder">
+    <!-- You sketch will go here! -->
+    data = [5, 10, 8, 3, 2, 7]
+    bar_width = 50
+    x_pos = 5
+
+
+    def setup():
+    createCanvas(600, 400)
+    noStroke()
+    textAlign(CENTER)
+
+
+    def draw():
+    global x_pos, bar_width, data
+    # background(255)
+    fill(0)
+    textSize(20)
+    text("Bar Chart", width / 2, 30)
+
+    for i in range(len(data)):
+    fill(200, 0, 0)
+    rect(x_pos, height - data[i] * 10, bar_width, data[i] * 10)
+    fill(0)
+    text(str(data[i]), x_pos + bar_width / 2, height - data[i] * 10 - 10)
+    x_pos += bar_width + 10
+
+  </div>
+</body>
+
 </html>
